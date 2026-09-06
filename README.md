@@ -1,19 +1,27 @@
-# PAD Selector Playbook
+# PAD-Selector-Playbook
 
-A practical playbook for building reliable and maintainable UI automation with **Microsoft Power Automate Desktop (PAD)**.
+A curated collection of practical patterns, recipes, and templates for handling notoriously tricky UI automation scenarios in **Microsoft Power Automate Desktop (PAD)**.
 
-This repository focuses on the UI automation scenarios where standard UI element capture is not enough: SAP GUI grids, Citrix/VDI surfaces, dynamic web tables, canvas/custom controls, and recovery patterns.
+The playbook focuses on the situations where standard UI element capture is not enough and the automation needs a more deliberate targeting, fallback, or recovery strategy.
 
 > **Status:** Documentation and implementation patterns are being built first. Runnable `.pad` examples will be added as the implementation examples are finalized and validated.
 
-## What this playbook covers
+---
 
-- **SAP GUI** – choosing between SAP-aware/native targeting, UI element properties, scripting-assisted approaches, grids, dynamic IDs, and modal dialogs.
-- **Citrix / VDI** – surface automation, image recognition, OCR, visual anchors, bounded search regions, and recovery strategies.
-- **Dynamic web tables** – stable attributes, dynamic selector properties, regex, row matching, and pagination.
-- **Canvas and custom controls** – anchor-based targeting, relative interaction, validation, and fallback selectors.
-- **Error handling and recovery** – retries, validation, screenshots, controlled fallbacks, and avoiding infinite loops.
-- **Cheatsheets** – selector operators, regex patterns, UI properties, and an automation decision tree.
+## 🎯 What's Inside
+
+| Module | Focus Area | Key Techniques |
+| :--- | :--- | :--- |
+| [01-sap-gui](./01-sap-gui/) | Enterprise ERP Automation | SAP GUI scripting, dynamic session handles, shell table grid navigation |
+| [02-citrix-surface-automation](./02-citrix-surface-automation/) | Virtualized / Remote Desktops | Bounded subregion OCR, image tolerance tuning, visual anchor targeting |
+| [03-dynamic-web-tables](./03-dynamic-web-tables/) | Web Grids & Pagination | Variable injection (`%Var%`), regex matching (`eq\(\d+\)`), resilient pager loops |
+| [04-canvas-and-custom-controls](./04-canvas-and-custom-controls/) | Non-Standard UI Elements | Anchor-based sibling targeting, multi-selector fallback hierarchies |
+| [05-nested-iframes](./05-nested-iframes/) | Embedded Web Content | Frame-aware targeting, cross-domain limitations, JavaScript bridge patterns |
+| [06-shadow-dom-saas](./06-shadow-dom-saas/) | Salesforce / ServiceNow / Modern SaaS | Shadow DOM awareness, JavaScript-based interaction patterns |
+| [07-unpredictable-modals](./07-unpredictable-modals/) | Random Popups & Dialogs | Proactive window-state checks, controlled error recovery, popup dismissal |
+| [cheatsheets](./cheatsheets/) | Quick Reference | Regex operators, selector syntax, UI properties, recovery and decision rules |
+
+---
 
 ## Selector Resilience Hierarchy
 
@@ -29,7 +37,9 @@ Use the strongest and most stable automation layer available. Do not jump direct
 
 The objective is not to create the shortest selector. The objective is to create an automation that survives predictable application changes.
 
-## Repository structure
+---
+
+## Repository Structure
 
 ```text
 PAD-Selector-Playbook/
@@ -43,7 +53,11 @@ PAD-Selector-Playbook/
 │   └── README.md
 ├── 04-canvas-and-custom-controls/
 │   └── README.md
-├── 05-error-handling-and-recovery/
+├── 05-nested-iframes/
+│   └── README.md
+├── 06-shadow-dom-saas/
+│   └── README.md
+├── 07-unpredictable-modals/
 │   └── README.md
 └── cheatsheets/
     ├── selector-operators-regex.md
@@ -53,13 +67,17 @@ PAD-Selector-Playbook/
 
 Runnable PAD flow files will be added beside the relevant recipe once each example has been tested.
 
-## Recommended recipe format
+---
+
+## Recommended Recipe Format
 
 Each scenario follows the same structure:
 
-**Problem → Why the normal approach fails → Recommended approach → Implementation pattern → Fallback → Validation → Common mistakes**
+**Problem → Why the normal approach fails → Resolution → Implementation pattern → Fallback → Validation → Common mistakes**
 
 This keeps the repository useful as both a learning resource and a practical reference during development and troubleshooting.
+
+---
 
 ## Prerequisites
 
@@ -67,11 +85,14 @@ This keeps the repository useful as both a learning resource and a practical ref
 - A test application/environment appropriate for the scenario
 - Permission to automate the target application
 - For Citrix/VDI scenarios, a stable test screen and awareness of display scaling/DPI settings
-- For SAP GUI scenarios, the appropriate SAP GUI configuration and scripting permissions where required
+- For SAP GUI scenarios, appropriate SAP GUI configuration and scripting permissions where required
+- For JavaScript-based web recipes, a browser session and a target page where the relevant DOM APIs are accessible
 
-## Important note
+## Important Note
 
-Selectors, UI properties, image recognition thresholds, OCR behavior, and application controls can vary by application version, Windows configuration, display scaling, and environment. Treat the examples as patterns rather than universal values.
+Selectors, UI properties, JavaScript behavior, image recognition thresholds, OCR results, and application controls can vary by application version, browser, Windows configuration, display scaling, and environment. Treat the examples as patterns rather than universal values.
+
+---
 
 ## Goal
 
