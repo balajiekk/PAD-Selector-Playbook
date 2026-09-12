@@ -1,6 +1,6 @@
 # PAD-Selector-Playbook
 
-A curated collection of practical patterns, recipes, and templates for handling notoriously tricky UI automation scenarios in **Microsoft Power Automate Desktop (PAD)**.
+A curated collection of practical patterns, recipes & templates for handling notoriously tricky UI automation scenarios in **Microsoft Power Automate Desktop (PAD)**.
 
 The playbook focuses on the situations where standard UI element capture is not enough and the automation needs a more deliberate targeting, fallback, or recovery strategy.
 
